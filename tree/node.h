@@ -10,8 +10,8 @@ struct Node{
         Node* _right;
         int _data;
     public:
-        Node(int data):_data(data),_left(NULL),_right(NULL){}
-        int getData()
+		Node(int data = 0):_data(data),_left(NULL),_right(NULL){}
+		int getData()
         {
             return _data;
         }

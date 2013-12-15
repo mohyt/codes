@@ -68,3 +68,52 @@ void Tree::postOrderTrav(Node* trvPtr){
     postOrderTrav(trvPtr->getRightNode());
     cout<<trvPtr->getData()<<" ";
 }
+
+Node* Tree::getPredecessor(Node* curr)
+{
+	Node* trvPtr = curr->getLeftNode();
+	if(trvPtr)
+	{
+		while(trvPtr->getRightNode())
+		{
+			trvPtr = trvPtr->getRightNode();
+		}
+		return trvPtr;
+	}
+	return NULL;
+}
+
+void Tree::morrisTrav(Node* trvPtr){
+	cout<<"****Morris Trav****";
+	Node* curr, *pre;
+	curr = trvPtr;
+	if(curr == NULL)
+	{
+		return;
+	}
+	cout<<curr->getData();
+	while(curr != NULL)
+	{
+		if(curr->getLeftNode() == NULL)
+		{
+			cout<<curr->getData();
+			curr=curr->getRightNode();
+		}
+		else
+		{
+			pre=getPredecessor(curr);
+			cout<<pre->getData();
+			if(pre->getRightNode() == NULL)
+			{
+				pre->setRightNode(curr);
+				curr=curr->getLeftNode();
+			}
+			else
+			{
+				pre->setRightNode(NULL);
+				cout<<pre->getData();
+				curr=curr->getRightNode();
+			}
+		}
+	}
+}

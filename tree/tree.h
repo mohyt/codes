@@ -20,6 +20,8 @@ struct Tree{
         void inOrderTrav(Node*);
         void preOrderTrav(Node*);
         void postOrderTrav(Node*);
+		Node* getPredecessor(Node*);
+		void morrisTrav(Node*);
         void setRoot(Node* root)
         {
             _root = root;

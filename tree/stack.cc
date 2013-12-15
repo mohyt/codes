@@ -30,7 +30,7 @@ Node* Stack::getTop(){
     return data[top];
 }
 
-Node* Stack::stackDisplay(){
+void Stack::stackDisplay(){
     while(top!=-1)
     {
         cout<<pop()->getData()<<" ";
