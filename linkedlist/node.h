@@ -1,15 +1,15 @@
-#include<iostream.h>
-
-using namespace std;
+#ifndef NODE_H
+#define NODE_H
 
 struct Node{
 	private:
-		void* _data;
+		int _data;
 		Node* _next;
 		Node* _prev;
 	public:
-		Node(void* data,Node* next,Node* prev):_data(data):_next(next):_prev(prev){}
-		(void*) getData()
+        Node():_next(NULL),_prev(NULL){}
+		Node(int data,Node* next,Node* prev):_data(data),_next(next),_prev(prev){}
+		int getData()
 		{
 			return _data;
 		}
@@ -21,7 +21,7 @@ struct Node{
 		{
 			return _prev;
 		}
-		void setData(void* data)
+		void setData(int data)
 		{
 			_data = data;
 		}
@@ -35,3 +35,4 @@ struct Node{
 		}
 
 };
+#endif
