@@ -7,6 +7,7 @@ void Tree::createTree(int arr[],int arr_size){
         insertNodeTree(arr[i]);
     }
 }
+
 void Tree::insertNodeTree(int data){
     Node* newNode = new Node(data);
     Node* trvPtr = _root;
@@ -74,7 +75,7 @@ Node* Tree::getPredecessor(Node* curr)
 	Node* trvPtr = curr->getLeftNode();
 	if(trvPtr)
 	{
-		while(trvPtr->getRightNode())
+		while(trvPtr->getRightNode() && trvPtr->getRightNode() != curr)
 		{
 			trvPtr = trvPtr->getRightNode();
 		}
@@ -84,14 +85,12 @@ Node* Tree::getPredecessor(Node* curr)
 }
 
 void Tree::morrisTrav(Node* trvPtr){
-	cout<<"****Morris Trav****";
 	Node* curr, *pre;
 	curr = trvPtr;
 	if(curr == NULL)
 	{
 		return;
 	}
-	cout<<curr->getData();
 	while(curr != NULL)
 	{
 		if(curr->getLeftNode() == NULL)
@@ -102,7 +101,6 @@ void Tree::morrisTrav(Node* trvPtr){
 		else
 		{
 			pre=getPredecessor(curr);
-			cout<<pre->getData();
 			if(pre->getRightNode() == NULL)
 			{
 				pre->setRightNode(curr);
@@ -111,7 +109,7 @@ void Tree::morrisTrav(Node* trvPtr){
 			else
 			{
 				pre->setRightNode(NULL);
-				cout<<pre->getData();
+				cout<<curr->getData();
 				curr=curr->getRightNode();
 			}
 		}

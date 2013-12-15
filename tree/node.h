@@ -23,7 +23,7 @@ struct Node{
         {
             return _right;
         }
-        void setRightNode(Node* right)
+        void setRightNode(Node *right)
         {
             _right = right;
         }
