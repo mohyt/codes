@@ -83,7 +83,7 @@ int partition(int A[],int q,int r)
         if(A[j]<=x)
         {
             i=i+1;
-            swap(A,i,j);
+            swap(A,i,j);// xorSwap cannot be use here, because x^x =0
         }
      }
     swap(A,i+1,r);
