@@ -21,9 +21,16 @@ struct LinkedList{
         Node* getNthNodeFromLast(int n);
         void deleteLinkedList(Node*);
         Node* reverse(Node*);
+        Node* hasCircularLoop(Node*);
+        int lenght(Node*);
+        void mergeAtAlternatePos(LinkedList*);
         Node* getHead()
         {
             return _head;
+        }
+        void setHead(Node* node)
+        {
+            _head = node;
         }
 };
 #endif

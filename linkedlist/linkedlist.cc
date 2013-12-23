@@ -170,4 +170,63 @@ void LinkedList::deleteLinkedList(Node* node)
     }
 }
 
+Node* LinkedList::hasCircularLoop(Node* node)
+{
+    bool _hasLoop = false;
+    if(node)
+    {
+        Node* _ftrvPtr=node;
+        Node* _strvPtr=node;
 
+        while(_ftrvPtr && _ftrvPtr->getNext() && !_hasLoop)
+        {
+            _ftrvPtr = _ftrvPtr->getNext()->getNext();
+            _strvPtr = _strvPtr->getNext();
+            if(_ftrvPtr == _strvPtr)
+            {
+                _hasLoop = true;
+            }
+        }
+
+        if(_hasLoop)
+        {
+            Node* _loopPtr=_head;
+            while(1)
+            {
+                _loopPtr = _loopPtr->getNext();
+                _strvPtr = _strvPtr->getNext();
+                if(_loopPtr == _strvPtr)
+                {
+                    return _strvPtr;
+                }
+            }
+        }
+    }
+    return NULL;
+}
+
+int LinkedList::lenght(Node* node)
+{
+     Node* _trvPtr=node;
+     int _nodeCount=0;
+    if(_trvPtr)
+    {
+        _trvPtr=_trvPtr->getNext();
+        ++_nodeCount;
+    }
+    return _nodeCount;
+}
+
+void LinkedList::mergeAtAlternatePos(LinkedList *ll_2)
+{
+    Node* _ftrvPtr=_head;
+    Node* _strvPtr=ll_2->getHead();
+    while(_ftrvPtr && _strvPtr)
+    {
+        ll_2->setHead(_strvPtr->getNext());
+        _strvPtr->setNext(_ftrvPtr->getNext());
+        _ftrvPtr->setNext(_strvPtr);
+        _ftrvPtr=_strvPtr->getNext();
+        _strvPtr=ll_2->getHead();
+    }
+}
